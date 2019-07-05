@@ -4,10 +4,10 @@ object Main {
   def main(args: Array[String]): Unit = {
     var playing: Boolean = true
 
-//    val hp: Integer = 100
-//    val mana: Integer = 5
-//    val attackDamage: Integer = 2
-//    var inCombat: Boolean = false
+    val hp: Integer = 100
+    val mana: Integer = 5
+    val attackDamage: Integer = 2
+    var inCombat: Boolean = false
 
     var xDirection: Integer = 0
     var yDirection: Integer = 0
@@ -19,7 +19,6 @@ object Main {
     println(s"The Exit Is At " + yExit + " North and " + xExit + " East")
 
     var nameSelected: Boolean = false
-
     while (nameSelected == false){
       println(s"Please Enter A Character Name")
       val name=scala.io.StdIn.readLine()
@@ -36,22 +35,55 @@ object Main {
       }
     }
 
+    var classSelected: Boolean = false
 
     while (playing)
     {
+      while (classSelected == false){
+        println("Select A Class Or Type Info Followed By The Class Name For More Information")
+        val playerClassCheck=scala.io.StdIn.readLine()
+        var playerClass = "Knight"
+
+        if (playerClassCheck.toLowerCase() == "knight"){
+          println("You Are Now A Knight")
+          playerClass = "Knight"
+        }
+        else if (playerClassCheck.toLowerCase() == "theif"){
+          println("You Are Now A Theif")
+          playerClass = "Theif"
+        }
+        else {
+          println("That Class Is Not An Option , You Have Been Set As Knight By Default")
+          playerClass = "Knight"
+        }
+
+        println(s"So Your Class Is : " + playerClass)
+        println(s"Is This Class Correct ")
+        val input = scala.io.StdIn.readLine()
+
+        if (input == "yes" || input == "y") {
+          classSelected = true
+        }
+        else {
+          classSelected = false
+        }
+      }
+
+      println("\nTry \"north\", \"south\", \"east\", or \"west\"\n")
+
       val input=scala.io.StdIn.readLine()
       println("The user has entered "+ input)
 
-      if (input == "north"){
+      if (input.toLowerCase() == "north"){
         yDirection += 1
       }
-      else if (input == "south"){
+      else if (input.toLowerCase() == "south"){
         yDirection -= 1
       }
-      else if (input == "east"){
+      else if (input.toLowerCase() == "east"){
         xDirection += 1
       }
-      else if (input == "west"){
+      else if (input.toLowerCase() == "west"){
         xDirection -= 1
       }
       println(s"You Are Now At " + yDirection + " North and " + xDirection+" East")
