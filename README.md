@@ -1,2 +1,2 @@
 # Scala_Text_Adventrue
-A Simple Text Adventure Made using Scala in Intellaj
+A Simple Text Adventure Made using Scala in Intellij
