@@ -36,9 +36,32 @@ object Main {
     }
 
     var classSelected: Boolean = false
+    var colorSelected: Boolean = false
 
     while (playing)
     {
+      while (colorSelected == false) {
+        println("Select A Prefered Color")
+        val textColor = scala.io.StdIn.readLine()
+
+        if (textColor.toLowerCase() == "blue") {println(Console.BLUE + "This is the new text color")}
+        else if (textColor.toLowerCase() == "red") {println(Console.RED + "This is the new text color")}
+        else if (textColor.toLowerCase() == "white") {println(Console.WHITE + "This is the new text color")}
+        else if (textColor.toLowerCase() == "black") {println(Console.BLACK + "This is the new text color")}
+        else if (textColor.toLowerCase() == "green") {println(Console.GREEN + "This is the new text color")}
+        else if (textColor.toLowerCase() == "yellow") {println(Console.YELLOW + "This is the new text color")}
+        else if (textColor.toLowerCase() == "purple") {println(Console.MAGENTA + "This is the new text color")}
+
+        println("Are You Happy With This Choice Of Color")
+        val input = scala.io.StdIn.readLine()
+        if (input == "yes" || input == "y") {
+          colorSelected = true
+        }
+        else {
+          colorSelected = false
+        }
+      }
+
       while (classSelected == false){
         println("Select A Class Or Type Info Followed By The Class Name For More Information")
         val playerClassCheck=scala.io.StdIn.readLine()
@@ -68,8 +91,7 @@ object Main {
           classSelected = false
         }
       }
-
-      println("\nTry \"north\", \"south\", \"east\", or \"west\"\n")
+      println("\nTry \"north\", \"south\", \"east\", or \"west\"")
 
       val input=scala.io.StdIn.readLine()
       println("The user has entered "+ input)
@@ -101,6 +123,9 @@ object Main {
           println("Starting Over........")
           xDirection = 0
           yDirection = 0
+
+          classSelected = false
+          colorSelected = false
 
           xExit = scala.util.Random.nextInt(10) -5
           yExit = scala.util.Random.nextInt(10) -5
