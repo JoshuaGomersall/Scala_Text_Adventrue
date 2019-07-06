@@ -1,10 +1,12 @@
 package sample.TextGame
 
-
-
 object Main {
   def main(args: Array[String]): Unit = {
     val playing: Boolean = true
+
+    val confirmInputs: List[String] = List("y", "yes", "yeah" , "yep" ,"yup" ,"sure")
+
+
     var name: String = "Greg"
     var playerClass = "Knight"
     //    val hp: Integer = 100
@@ -21,9 +23,8 @@ object Main {
     var yEvent: Int = scala.util.Random.nextInt(10) - 5
 
 
-
     println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-    CompassMain(xDirection,xExit,xEvent,yDirection,yExit,yEvent)
+    CompassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
 
 
     var nameSelected: Boolean = false
@@ -34,7 +35,7 @@ object Main {
       println(s"Is This Name Correct ")
       val input = scala.io.StdIn.readLine()
 
-      if (input == "yes" || input == "y") {
+      if (confirmInputs.contains(input)) {
         nameSelected = true
       }
       else {
@@ -59,7 +60,7 @@ object Main {
         }
         println("Are You Happy With This Choice Of Color")
         val input = scala.io.StdIn.readLine()
-        if (input == "yes" || input == "y") {
+        if (confirmInputs.contains(input)) {
           colorSelected = true
         }
         else {
@@ -70,9 +71,8 @@ object Main {
       while (!classSelected) {
         println("Select A Class Or Type Info And The Class Name For More Information \nType info class for a list of all class options")
         var playerClassCheck = scala.io.StdIn.readLine()
-
         if (playerClassCheck.toLowerCase().contains("info")) {
-          playerClassCheck = playerClassCheck.replaceAll("info","")
+          playerClassCheck = playerClassCheck.replaceAll("info", "")
 
           playerClassCheck.toLowerCase() match {
             case " class" => println("Bard ,Barbarian ,Cleric ,Druid ,Fighter ,Monk ,Paladin ,Ranger ,Rogue ,Sorcery ,Warlock ,Wizard ")
@@ -97,8 +97,8 @@ object Main {
             case _ if playerClassCheck.contains("bard") => println("You Are Now A Bard"); playerClass = "Bard"
             case _ if playerClassCheck.contains("barb") => println("You Are Now A Barbarian"); playerClass = "Barbarian"
             case _ if playerClassCheck.contains("cleric") => println("You Are Now A Cleric"); playerClass = "Cleric"
-            case _ if playerClassCheck.contains("druid") =>  println("You Are Now A Druid"); playerClass = "Druid"
-            case _ if playerClassCheck.contains("fighter") =>  println("You Are Now A Fighter"); playerClass = "Fighter"
+            case _ if playerClassCheck.contains("druid") => println("You Are Now A Druid"); playerClass = "Druid"
+            case _ if playerClassCheck.contains("fighter") => println("You Are Now A Fighter"); playerClass = "Fighter"
             case _ if playerClassCheck.contains("monk") => println("You Are Now A Monk"); playerClass = "Monk"
             case _ if playerClassCheck.contains("paladin") => println("You Are Now A Paladin"); playerClass = "Paladin"
             case _ if playerClassCheck.contains("ranger") => println("You Are Now A Ranger"); playerClass = "Ranger"
@@ -112,7 +112,7 @@ object Main {
           println(s"Is This Class Correct ")
           val input = scala.io.StdIn.readLine()
 
-          if (input == "yes" || input == "y") {
+          if (confirmInputs.contains(input)) {
             classSelected = true
           }
           else {
@@ -138,9 +138,9 @@ object Main {
         xDirection -= 1
       }
       println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-      CompassMain(xDirection,xExit ,xEvent,yDirection,yExit,yEvent)
+      CompassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
 
-      if (xDirection == xEvent && yDirection == yEvent){
+      if (xDirection == xEvent && yDirection == yEvent) {
         println("YOU FOUND A THING")
         xEvent = scala.util.Random.nextInt(10) - 5
         yEvent = scala.util.Random.nextInt(10) - 5
@@ -166,14 +166,14 @@ object Main {
           xExit = scala.util.Random.nextInt(10) - 5
           yExit = scala.util.Random.nextInt(10) - 5
           println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-          CompassMain(xDirection,xExit,xEvent,yDirection,xExit,xEvent)
+          CompassMain(xDirection, xExit, xEvent, yDirection, xExit, xEvent)
         }
       }
       else if (yDirection == yExit) {
-        println(s"The Exit Must Be Left Or Right From Here")
+        println(s"The Compass Seems To Sharply Turn The Exit Must Be Left Or Right From Here")
       }
       else if (xDirection == xExit) {
-        println(s"The Exit Must Be North Or South From Here")
+        println(s"The Compass Seems To Sharply Turn The Exit Must Be North Or South From Here")
       }
     }
   }
