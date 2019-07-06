@@ -4,6 +4,8 @@ object Main {
   def main(args: Array[String]): Unit = {
     val playing: Boolean = true
 
+    GameText("title")
+
     val confirmInputs: List[String] = List("y", "yes", "yeah" , "yep" ,"yup" ,"sure")
 
 
@@ -144,6 +146,9 @@ object Main {
         println("YOU FOUND A THING")
         xEvent = scala.util.Random.nextInt(10) - 5
         yEvent = scala.util.Random.nextInt(10) - 5
+
+        Combat()
+
       }
       else if (xDirection == xExit && yDirection == yExit) {
         println(s"It Seems You Found The Exit")
@@ -154,7 +159,7 @@ object Main {
         println(s"Would You Like To Play Again")
         val inputExit = scala.io.StdIn.readLine()
         if (inputExit.toLowerCase() == "no" || inputExit.toLowerCase() == "n") {
-          println("Game Over........")
+          GameText("gameover")
           sys.exit()
         }
         else {
