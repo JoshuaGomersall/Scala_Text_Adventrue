@@ -1,30 +1,30 @@
 package sample.TextGame
 
 
+
 object Main {
   def main(args: Array[String]): Unit = {
     val playing: Boolean = true
-
     var name: String = "Greg"
     var playerClass = "Knight"
-
     //    val hp: Integer = 100
     //    val mana: Integer = 5
     //    val attackDamage: Integer = 2
     //    var inCombat: Boolean = false
-
     var xDirection: Integer = 0
     var yDirection: Integer = 0
 
-    var xExit: Integer = scala.util.Random.nextInt(10) - 5
-    var yExit: Integer = scala.util.Random.nextInt(10) - 5
+    var xExit: Int = scala.util.Random.nextInt(10) - 5
+    var yExit: Int = scala.util.Random.nextInt(10) - 5
 
-    val xEvent: Integer = scala.util.Random.nextInt(10) - 5
-    val yEvent: Integer = scala.util.Random.nextInt(10) - 5
+    var xEvent: Int = scala.util.Random.nextInt(10) - 5
+    var yEvent: Int = scala.util.Random.nextInt(10) - 5
+
+
 
     println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-    println(s"The Exit Is At " + yExit + " North and " + xExit + " East")
-    println(s"The Next Combat Is At " + yEvent + " North and " + xEvent + " East")
+    CompassMain(xDirection,xExit,xEvent,yDirection,yExit,yEvent)
+
 
     var nameSelected: Boolean = false
     while (!nameSelected) {
@@ -138,9 +138,14 @@ object Main {
         xDirection -= 1
       }
       println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-      println(s"The Exit Is At " + yExit + " North and " + xExit + " East")
+      CompassMain(xDirection,xExit ,xEvent,yDirection,yExit,yEvent)
 
-      if (xDirection == xExit && yDirection == yExit) {
+      if (xDirection == xEvent && yDirection == yEvent){
+        println("YOU FOUND A THING")
+        xEvent = scala.util.Random.nextInt(10) - 5
+        yEvent = scala.util.Random.nextInt(10) - 5
+      }
+      else if (xDirection == xExit && yDirection == yExit) {
         println(s"It Seems You Found The Exit")
 
         println(s"This Was Not The End But The Start Of The Adventures of " + name + " The " + playerClass)
@@ -161,7 +166,7 @@ object Main {
           xExit = scala.util.Random.nextInt(10) - 5
           yExit = scala.util.Random.nextInt(10) - 5
           println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-          println(s"The Exit Is At " + yExit + " North and " + xExit + " East")
+          CompassMain(xDirection,xExit,xEvent,yDirection,xExit,xEvent)
         }
       }
       else if (yDirection == yExit) {
