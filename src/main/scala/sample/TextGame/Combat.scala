@@ -2,7 +2,7 @@ package sample.TextGame
 
 
 object CombatObject {
-  def CombatStart(): String = {
+  def combatStart(): String = {
     var enemyType: Int = scala.util.Random.nextInt(4) + 1
     val enemy = new Enemy("Greg", enemyType)
     println("Combat Has Started")
@@ -10,7 +10,7 @@ object CombatObject {
     return "Start"
   }
 
-  def CombatEnd(): String = {
+  def combatEnd(): String = {
     println("Combat Has Ended")
     return "End"
   }
