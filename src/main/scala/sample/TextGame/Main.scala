@@ -17,7 +17,7 @@ object Main {
     var yEvent: Int = scala.util.Random.nextInt(10) - 5
 
     GameText("title")
-    val name :String = NameSelectObject.nameSelect()
+    val name: String = NameSelectObject.nameSelect()
     ColorSelectObject.colorSelect()
     val playerClass: String = ClassSelectionObject.classSelection()
 
@@ -34,7 +34,7 @@ object Main {
         case "e" => xDirection += 1
         case "west" => xDirection -= 1
         case "w" => xDirection -= 1
-        case "settings" => ColorSelectObject.reset() ;ColorSelectObject.colorSelect()
+        case "settings" => ColorSelectObject.reset(); ColorSelectObject.colorSelect()
         case _ => println("Your Choice Was Invalid , Try And Use North , South , West Or East") // the default, catch-all
       }
       println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
@@ -47,7 +47,7 @@ object Main {
         CombatObject.combatEnd()
       }
       else if (xDirection == xExit && yDirection == yExit) {
-        FindingEventsTextObject.findExitText(name,playerClass)
+        FindingEventsTextObject.findExitText(name, playerClass)
         val inputExit = scala.io.StdIn.readLine()
         if (inputExit.toLowerCase().contains("no") || inputExit.toLowerCase().contains("n")) {
           GameText("gameoverghost")
