@@ -17,75 +17,56 @@ object Main {
     var yEvent: Int = scala.util.Random.nextInt(10) - 5
 
     GameText("title")
-    val name :String = NameSelectObject.nameSelect()
+    val name: String = NameSelectObject.nameSelect()
     ColorSelectObject.colorSelect()
     val playerClass: String = ClassSelectionObject.classSelection()
 
-
     while (playing) {
       println("\nTry \"north\", \"south\", \"east\", or \"west\" Or Use Settings To Change Settings")
-
       val input = scala.io.StdIn.readLine()
       println("The user has entered " + input)
-
-      if (input.toLowerCase() == "north" || input.toLowerCase() == "n") {
-        yDirection += 1
+      input.toLowerCase() match {
+        case "north" => yDirection += 1
+        case "n" => yDirection += 1
+        case "south" => yDirection -= 1
+        case "s" => yDirection -= 1
+        case "east" => xDirection += 1
+        case "e" => xDirection += 1
+        case "west" => xDirection -= 1
+        case "w" => xDirection -= 1
+        case "settings" => ColorSelectObject.reset(); ColorSelectObject.colorSelect()
+        case _ => println("Your Choice Was Invalid , Try And Use North , South , West Or East") // the default, catch-all
       }
-      else if (input.toLowerCase() == "south" || input.toLowerCase() == "s") {
-        yDirection -= 1
-      }
-      else if (input.toLowerCase() == "east" || input.toLowerCase() == "e") {
-        xDirection += 1
-      }
-      else if (input.toLowerCase() == "west" || input.toLowerCase() == "w") {
-        xDirection -= 1
-      }
-      else if (input.toLowerCase() == "settings") {
-        ColorSelectObject.reset()
-        ColorSelectObject.colorSelect()
-      }
-
       println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
       CompassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
-
       if (xDirection == xEvent && yDirection == yEvent) {
-        println("YOU FOUND A THING")
+        FindingEventsTextObject.findEventText()
         xEvent = scala.util.Random.nextInt(10) - 5
         yEvent = scala.util.Random.nextInt(10) - 5
-
-        CombatObject.CombatStart()
-
+        CombatObject.combatStart()
+        CombatObject.combatEnd()
       }
       else if (xDirection == xExit && yDirection == yExit) {
-        println(s"It Seems You Found The Exit")
-        println(s"This Was Not The End But The Start Of The Adventures of " + name + " The " + playerClass)
-        println(s"Would You Like To Play Again")
+        FindingEventsTextObject.findExitText(name, playerClass)
         val inputExit = scala.io.StdIn.readLine()
         if (inputExit.toLowerCase().contains("no") || inputExit.toLowerCase().contains("n")) {
           GameText("gameoverghost")
           sys.exit()
         }
         else {
-          println("Starting Over........")
+          FindingEventsTextObject.startingOver()
           xDirection = 0
           yDirection = 0
-          NameSelectObject.reset()
-          NameSelectObject.nameSelect()
-          ColorSelectObject.reset()
-          ColorSelectObject.colorSelect()
-          ClassSelectionObject.reset()
-          ClassSelectionObject.classSelection()
-          xExit = scala.util.Random.nextInt(10) - 5
-          yExit = scala.util.Random.nextInt(10) - 5
-          println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
+          xExit = Random.nextInt(10) - 5
+          yExit = Random.nextInt(10) - 5
           CompassMain(xDirection, xExit, xEvent, yDirection, xExit, xEvent)
         }
       }
       else if (yDirection == yExit) {
-        println(s"The Compass Seems To Sharply Turn The Exit Must Be Left Or Right From Here")
+        FindingEventsTextObject.yAlignedWithExitText()
       }
       else if (xDirection == xExit) {
-        println(s"The Compass Seems To Sharply Turn The Exit Must Be North Or South From Here")
+        FindingEventsTextObject.xAlignedWithExitText()
       }
     }
   }

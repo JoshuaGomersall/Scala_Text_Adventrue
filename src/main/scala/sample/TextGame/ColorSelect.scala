@@ -6,6 +6,11 @@ object ColorSelectObject {
   def colorSelect(): String = {
     while (!colorSelected) {
       println(Console.BLACK + "Select A Preferred Text Color")
+      println(Console.BLUE + "This is blue")
+      println(Console.RED + "This is red")
+      println(Console.GREEN + "This is green")
+      println(Console.YELLOW + "This is yellow")
+      println(Console.MAGENTA + "This is purple")
       val textColor = scala.io.StdIn.readLine()
       textColor.toLowerCase() match {
         case "blue" => println(Console.BLUE + "This is the new text color")
