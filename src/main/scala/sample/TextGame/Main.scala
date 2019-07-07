@@ -5,48 +5,24 @@ import scala.util.Random
 object Main {
   def main(args: Array[String]): Unit = {
     val playing: Boolean = true
-
-    GameText("title")
-
-    var name: String = "Greg"
     //    val hp: Integer = 100
     //    val mana: Integer = 5
     //    val attackDamage: Integer = 2
     //    var inCombat: Boolean = false
-
     var xDirection: Integer = 0
     var yDirection: Integer = 0
-
     var xExit: Int = Random.nextInt(10) - 5
     var yExit: Int = Random.nextInt(10) - 5
-
     var xEvent: Int = scala.util.Random.nextInt(10) - 5
     var yEvent: Int = scala.util.Random.nextInt(10) - 5
 
-    println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-    CompassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
+    GameText("title")
+    val name :String = NameSelectObject.nameSelect()
+    ColorSelectObject.colorSelect()
+    val playerClass: String = ClassSelectionObject.classSelection()
 
-    var nameSelected: Boolean = false
-    while (!nameSelected) {
-      println(s"Please Enter A Character Name")
-      name = scala.io.StdIn.readLine()
-      println(s"So Your Name Is : " + name)
-      println(s"Is This Name Correct ")
-      val input = scala.io.StdIn.readLine()
-
-      if (GlobalValuesObject.confirmResponse().contains(input)) {
-        nameSelected = true
-      }
-      else {
-        nameSelected = false
-      }
-    }
 
     while (playing) {
-      ColorSelectObject.colorSelect()
-
-      val playerClass: String = ClassSelectionObject.classSelection()
-
       println("\nTry \"north\", \"south\", \"east\", or \"west\" Or Use Settings To Change Settings")
 
       val input = scala.io.StdIn.readLine()
@@ -82,10 +58,7 @@ object Main {
       }
       else if (xDirection == xExit && yDirection == yExit) {
         println(s"It Seems You Found The Exit")
-
         println(s"This Was Not The End But The Start Of The Adventures of " + name + " The " + playerClass)
-
-
         println(s"Would You Like To Play Again")
         val inputExit = scala.io.StdIn.readLine()
         if (inputExit.toLowerCase().contains("no") || inputExit.toLowerCase().contains("n")) {
@@ -96,6 +69,8 @@ object Main {
           println("Starting Over........")
           xDirection = 0
           yDirection = 0
+          NameSelectObject.reset()
+          NameSelectObject.nameSelect()
           ColorSelectObject.reset()
           ColorSelectObject.colorSelect()
           ClassSelectionObject.reset()
