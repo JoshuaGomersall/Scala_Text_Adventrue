@@ -4,7 +4,7 @@
 		module="textadventure-build"
 		revision="0.1.0-SNAPSHOT"
 		status="integration"
-		publication="20190705173252"
+		publication="20190707121034"
 		e:sbtVersion="1.0" e:scalaVersion="2.12"
 	>
 		<description>
