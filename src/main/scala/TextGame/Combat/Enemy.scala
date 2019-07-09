@@ -57,7 +57,7 @@ object Enemy {
 
     def intro: String = s"Hi im $name and im a $enemyType"
 
-    def fullStats: String = s"===========================\n Name: $name \nType: $enemyType \nHealth: $hp \nAttack: $attack\n $characterImage \n==========================="
+    def fullStats: String = s"===========================\nName: $name \nType: $enemyType \nHealth: $hp \nAttack: $attack\n $characterImage \n==========================="
   }
 
 }
