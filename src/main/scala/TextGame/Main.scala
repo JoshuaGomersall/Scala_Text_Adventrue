@@ -1,7 +1,7 @@
 package TextGame
 
+import TextGame.Combat._
 import TextGame.Text.FindingEvents
-import TextGame.Combat.{Inventory, Player}
 
 import scala.util.Random
 
