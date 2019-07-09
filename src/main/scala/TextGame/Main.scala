@@ -1,6 +1,6 @@
 package TextGame
 
-import TextGame.Combat._
+import TextGame.CombatActions._
 import TextGame.Text.FindingEvents
 
 import scala.util.Random
@@ -51,7 +51,7 @@ object Main {
         FindingEvents.findEventText()
         xEvent = scala.util.Random.nextInt(10) - 5
         yEvent = scala.util.Random.nextInt(10) - 5
-        Combat.Combat.combatStart(player)
+        Combat.combatStart(player)
       }
       else if (xDirection == xExit && yDirection == yExit) {
         FindingEvents.findExitText(name, playerClass)

@@ -1,4 +1,4 @@
-package TextGame.Combat
+package TextGame.CombatActions
 
 object Loot {
 
