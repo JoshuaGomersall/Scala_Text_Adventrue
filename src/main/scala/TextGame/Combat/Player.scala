@@ -21,7 +21,7 @@ object Player {
     player.fullStats.toString
   }
 
-  class Player(var name: String, var playerClass: String, var hp: Int = 1000, var attack: Int = 10) {
+  class Player(var name: String, var playerClass: String, var hp: Int = 100, var attack: Int = 10) {
     playerClass.toLowerCase match {
       case "bard" => println(s"The Enemy Is A Goblin")
       case _ => println(s"The Class Is Invalid ,Default Stats Set")
@@ -31,7 +31,7 @@ object Player {
 
     def intro: String = s"Hi im $name and im a $playerClass"
 
-    def fullStats: String = s"Name: $name \nClass: $playerClass \nHealth: $hp \nAttack: $attack"
+    def fullStats: String = s"===========================\n Name: $name \nClass: $playerClass \nHealth: $hp \nAttack: $attack \n==========================="
   }
 
 }

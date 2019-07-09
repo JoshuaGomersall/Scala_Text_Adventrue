@@ -7,7 +7,7 @@ object Combat {
     val newEnemy = Enemy.makeEnemy()
     println("Combat Has Started")
     Enemy.enemyIntro(newEnemy.name, newEnemy.enemyType)
-    while (newEnemy.hp > 1) {
+    while (newEnemy.hp > 0) {
       println(s"Select An Action You Can Attack , Heal Or Use Enemy Stats or Player Stats For More Information")
       val userAction = scala.io.StdIn.readLine()
       userAction.toLowerCase() match {
