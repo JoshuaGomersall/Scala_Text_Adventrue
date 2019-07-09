@@ -1,12 +1,21 @@
 package TextGame
 
 import TextGame.Text.FindingEvents
-import TextGame.Combat.Player
+import TextGame.Combat.{Inventory, Player}
 
 import scala.util.Random
 
 object Main {
   def main(args: Array[String]): Unit = {
+
+    Inventory.equiptItem("sword")
+
+    Inventory.equiptItem("armor")
+
+    println(Inventory.addItemToBackPack("armor"))
+
+    Inventory.equiptItem("armor ")
+
     val playing: Boolean = true
     //    val hp: Integer = 100
     //    val mana: Integer = 5

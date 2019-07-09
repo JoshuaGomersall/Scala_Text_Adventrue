@@ -18,7 +18,7 @@ object ColorSelect {
         case "green" => println(Console.GREEN + "This is the new text color")
         case "yellow" => println(Console.YELLOW + "This is the new text color")
         case "purple" => println(Console.MAGENTA + "This is the new text color")
-        case _ => println("Your Choice Was Invalid , This is the new text color") // the default, catch-all
+        case _ => println(Console.BLACK + "Your Choice Was Invalid , This is the new text color") // the default, catch-all
       }
       println("Are You Happy With This Choice Of Color")
       val input = scala.io.StdIn.readLine()

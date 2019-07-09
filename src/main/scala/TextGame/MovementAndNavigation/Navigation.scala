@@ -8,14 +8,10 @@ object Navigation {
     val input = scala.io.StdIn.readLine()
     println("The user has entered " + input)
     input.toLowerCase() match {
-      case "north" => yDirection += 1
-      case "n" => yDirection += 1
-      case "south" => yDirection -= 1
-      case "s" => yDirection -= 1
-      case "east" => xDirection += 1
-      case "e" => xDirection += 1
-      case "west" => xDirection -= 1
-      case "w" => xDirection -= 1
+      case "north" | "n" => yDirection += 1
+      case "south" | "s" => yDirection -= 1
+      case "east"  | "e" => xDirection += 1
+      case "west"  | "w" => xDirection -= 1
       case "settings" => ColorSelect.reset(); ColorSelect.colorSelect()
       case _ => println("Your Choice Was Invalid , Try And Use North , South , West Or East") // the default, catch-all
     }
