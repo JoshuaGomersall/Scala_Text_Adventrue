@@ -1,8 +1,8 @@
 package CharacterCreation
-import TextGame._
+import TextGame.Settings._
 
 object ClassTests {
   def main(args: Array[String]): Unit = {
-    ColorSelect.colorSelect()
+    ColorSelect.colorSelect("Blue")
   }
 }

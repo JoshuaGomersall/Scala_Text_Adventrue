@@ -1,90 +1,69 @@
 package TextGame
 
 import TextGame.CombatActions._
-import TextGame.Text.FindingEvents
-
-import scala.util.Random
+import TextGame.Text._
+import TextGame.Character_Creation._
+import TextGame.Settings._
+import TextGame.MovementAndNavigation._
 
 object Main {
   def main(args: Array[String]): Unit = {
-
-    Inventory.equiptItem("sword")
-
-    Inventory.equiptItem("armor")
-
-    println(Inventory.addItemToBackPack("armor"))
-
-    Inventory.equiptItem("armor ")
-
-    val playing: Boolean = true
-    //    val hp: Integer = 100
-    //    val mana: Integer = 5
-    //    val attackDamage: Integer = 2
-    //    var inCombat: Boolean = false
-    var xDirection: Int = 0
-    var yDirection: Int = 0
-    var xExit: Int = Random.nextInt(10) - 5
-    var yExit: Int = Random.nextInt(10) - 5
-    var xEvent: Int = scala.util.Random.nextInt(10) - 5
-    var yEvent: Int = scala.util.Random.nextInt(10) - 5
+    val xDirection: Int = 0
+    val yDirection: Int = 0
+    val xExit: Int = 2 //Random.nextInt(10) - 5
+    val yExit: Int = 2 //Random.nextInt(10) - 5
+    val xEvent: Int = 3 //scala.util.Random.nextInt(10) - 5
+    val yEvent: Int = 3 //scala.util.Random.nextInt(10) - 5
 
     TitleText("title")
+
     val name: String = NameSelect.nameSelect()
 
-
-    println(Console.BLACK + "Select A Preferred Text Color")
-    println(Console.BLUE + "This is blue")
-    println(Console.RED + "This is red")
-    println(Console.GREEN + "This is green")
-    println(Console.YELLOW + "This is yellow")
-    println(Console.MAGENTA + "This is purple")
-    ColorSelect.colorSelect(scala.io.StdIn.readLine())
-
+    ColorSelect.colorSelect()
 
     val playerClass: String = ClassSelection.classSelection()
 
     println(playerClass)
-    val player = Player.makePlayer(name ,playerClass)
+    val player = Player.make(name, playerClass)
 
-    var cordsPlayer: List[Int] = List(xDirection, yDirection)
+    mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent,player)
+  }
+  def mainGame(xPlayer: Int , yPlayer: Int, xExit : Int ,yExit: Int ,yEvent :Int, xEvent : Int ,player: Player.Player): Unit = {
+    val cordsPlayer = Navigation.movePlayer(xPlayer, yPlayer)
+    val xDirection = cordsPlayer(0)
+    val yDirection = cordsPlayer(1)
 
-    while (playing) {
-      //
-      cordsPlayer = Navigation.movePlayer(xDirection, yDirection)
-      xDirection = cordsPlayer(0)
-      yDirection = cordsPlayer(1)
-      println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
+    Compass.compassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
 
-      CompassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
-
-      if (xDirection == xEvent && yDirection == yEvent) {
-        FindingEvents.findEventText()
-        xEvent = scala.util.Random.nextInt(10) - 5
-        yEvent = scala.util.Random.nextInt(10) - 5
+    if (xDirection == xEvent && yDirection == yEvent) {
+      FindingEvents.findEventText()
+      val xEventNew = 2
+      val yEventNew = 2
         Combat.combatStart(player)
+    }
+    else if (xDirection == xExit && yDirection == yExit) {
+      FindingEvents.findExitText(player.name,player.playerClass)
+      val inputExit = scala.io.StdIn.readLine()
+      if (inputExit.toLowerCase().contains("no") || inputExit.toLowerCase().contains("n")) {
+        TitleText("gameoverghost")
+        sys.exit()
       }
-      else if (xDirection == xExit && yDirection == yExit) {
-        FindingEvents.findExitText(name, playerClass)
-        val inputExit = scala.io.StdIn.readLine()
-        if (inputExit.toLowerCase().contains("no") || inputExit.toLowerCase().contains("n")) {
-          TitleText("gameoverghost")
-          sys.exit()
-        }
-        else {
-          FindingEvents.startingOver()
-          xDirection = 0
-          yDirection = 0
-          xExit = Random.nextInt(10) - 5
-          yExit = Random.nextInt(10) - 5
-          CompassMain(xDirection, xExit, xEvent, yDirection, xExit, xEvent)
-        }
-      }
-      else if (yDirection == yExit) {
-        FindingEvents.yAlignedWithExitText()
-      }
-      else if (xDirection == xExit) {
-        FindingEvents.xAlignedWithExitText()
+      else {
+        FindingEvents.startingOver()
+        val xDirection = 0
+        val yDirection = 0
+        val xExit = 3
+        val yExit = 3
+        Compass.compassMain(xDirection,xExit,xEvent,yDirection,yExit,yEvent)
       }
     }
+    else if (yDirection == yExit) {
+      FindingEvents.yAlignedWithExitText()
+    }
+    else if (xDirection == xExit) {
+      FindingEvents.xAlignedWithExitText()
+    }
+
+    mainGame(xDirection,yDirection,xExit,yExit,yEvent,xEvent,player)
   }
 }

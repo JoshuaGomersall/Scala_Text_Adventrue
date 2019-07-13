@@ -1,20 +1,34 @@
-package TextGame
+package TextGame.MovementAndNavigation
 
 object Navigation {
   def movePlayer(xPlayer: Int, yPlayer: Int): List[Int] = {
-    val xDirection = xPlayer
-    val yDirection = yPlayer
+
     println("\nTry \"north\", \"south\", \"east\", or \"west\" Or Use Settings To Change Settings")
     val input = scala.io.StdIn.readLine()
     println("The user has entered " + input)
     input.toLowerCase() match {
-      case "north" | "n" => val yDirectionUpdated = yDirection - 1
-      case "south" | "s" => val yDirectionUpdated = yDirection - 1
-      case "east"  | "e" => val xDirectionUpdated = xDirection + 1
-      case "west"  | "w" => val xDirectionUpdated = xDirection - 1
-      case _ => println("Your Choice Was Invalid , Try And Use North , South , West Or East") // the default, catch-all
+      case "north" | "n" =>
+        val yDirectionUpdated = yPlayer + 1
+        displayLocation(yDirectionUpdated.toString,xPlayer.toString)
+        List(xPlayer ,yDirectionUpdated)
+      case "south" | "s" =>
+        val yDirectionUpdated = yPlayer - 1
+        displayLocation(yDirectionUpdated.toString ,xPlayer.toString)
+        List(xPlayer, yDirectionUpdated)
+      case "east"  | "e" =>
+        val xDirectionUpdated = xPlayer + 1
+        displayLocation(yPlayer.toString,xDirectionUpdated.toString)
+        List(xDirectionUpdated ,yPlayer)
+      case "west"  | "w" =>
+        val xDirectionUpdated = xPlayer - 1
+        displayLocation(yPlayer.toString , xDirectionUpdated.toString)
+          List(xDirectionUpdated , yPlayer)
+      case _ => println("Your Choice Was Invalid , Try And Use North , South , West Or East")
+        List(yPlayer,xPlayer)
     }
-    println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
-    List(xDirection, yDirection)
+  }
+
+  def displayLocation (xPlayer: String ,yPlayer: String): Unit = {
+    println(s"You Are Now At " + xPlayer + " North and " + yPlayer + " East")
   }
 }

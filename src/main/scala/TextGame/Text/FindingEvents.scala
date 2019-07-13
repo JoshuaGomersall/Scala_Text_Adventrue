@@ -1,8 +1,8 @@
 package TextGame.Text
 
-import TextGame.ColorSelect
-import TextGame.NameSelect._
-import TextGame._
+import TextGame.Character_Creation._
+import TextGame.Settings.ColorSelect
+import TextGame.Character_Creation.NameSelect._
 
 object FindingEvents {
 
@@ -14,16 +14,15 @@ object FindingEvents {
   def findExitText(name: String, playerClass: String): String = {
     println("YOU FOUND A THING")
     println(s"It Seems You Found The Exit")
-    println(s"This Was Not The End But The Start Of The Adventures of $name + The $playerClass")
+    println(s"This Was Not The End But The Start Of The Adventures of $name The $playerClass")
     println(s"Would You Like To Play Again")
     "Done"
   }
 
   def startingOver(): String = {
     println("Starting Over........")
-    reset()
     nameSelect()
-    ColorSelect.colorSelect(scala.util.StdIn.readLine())
+    ColorSelect.colorSelect(scala.io.StdIn.readLine())
     ClassSelection.classSelection()
     println(s"You Are Now At 0 North and 0 East")
     "Done"
