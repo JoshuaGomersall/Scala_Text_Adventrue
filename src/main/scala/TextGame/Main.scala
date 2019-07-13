@@ -34,7 +34,7 @@ object Main {
     val playerClass: String = ClassSelection.classSelection()
 
     println(playerClass)
-    val player = Player.makePlayer(name, playerClass)
+    val player = Player.make(name, playerClass)
 
     mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent ,name,playerClass,player)
   }

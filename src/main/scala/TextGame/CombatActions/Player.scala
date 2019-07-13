@@ -2,7 +2,7 @@ package TextGame.CombatActions
 
 object Player {
 
-  def makePlayer(name: String, playerClass: String): Player = {
+  def make(name: String, playerClass: String): Player = {
     val player = new Player(name, playerClass)
     player
   }
