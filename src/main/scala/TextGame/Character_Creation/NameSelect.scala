@@ -14,7 +14,7 @@ object NameSelect {
         println(s"Is This Name Correct ")
         val input = scala.io.StdIn.readLine()
         if (!GlobalValues.confirmResponse().contains(input)) {
-          nameSelect(scala.io.StdIn.readLine())
+          nameSelect()
         }
         name
     }

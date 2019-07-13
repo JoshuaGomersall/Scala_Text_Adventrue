@@ -1,7 +1,7 @@
 package TextGame.Text
 
 import TextGame.Character_Creation._
-import TextGame.ColorSelect
+import TextGame.Settings.ColorSelect
 import TextGame.Character_Creation.NameSelect._
 
 object FindingEvents {

@@ -10,11 +10,11 @@ object Navigation {
       case "north" | "n" =>
         val yDirectionUpdated = yPlayer + 1
         displayLocation(yDirectionUpdated.toString,xPlayer.toString)
-        List(yDirectionUpdated , xPlayer)
+        List(xPlayer ,yDirectionUpdated)
       case "south" | "s" =>
         val yDirectionUpdated = yPlayer - 1
         displayLocation(yDirectionUpdated.toString ,xPlayer.toString)
-        List(yDirectionUpdated , xPlayer)
+        List(xPlayer, yDirectionUpdated)
       case "east"  | "e" =>
         val xDirectionUpdated = xPlayer + 1
         displayLocation(yPlayer.toString,xDirectionUpdated.toString)
@@ -28,7 +28,7 @@ object Navigation {
     }
   }
 
-  def displayLocation (yPlayer: String ,xPlayer: String): Unit = {
-    println(s"You Are Now At " + yPlayer + " North and " + xPlayer + " East")
+  def displayLocation (xPlayer: String ,yPlayer: String): Unit = {
+    println(s"You Are Now At " + xPlayer + " North and " + yPlayer + " East")
   }
 }

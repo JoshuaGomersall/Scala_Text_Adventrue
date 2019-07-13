@@ -1,8 +1,9 @@
 package TextGame
 
 import TextGame.CombatActions._
-import TextGame.Text.{FindingEvents, TitleText}
+import TextGame.Text._
 import TextGame.Character_Creation._
+import TextGame.Settings._
 import TextGame.MovementAndNavigation._
 
 object Main {
@@ -18,28 +19,19 @@ object Main {
 
     val name: String = NameSelect.nameSelect()
 
-
-    println(Console.BLACK + "Select A Preferred Text Color")
-    println(Console.BLUE + "This is blue")
-    println(Console.RED + "This is red")
-    println(Console.GREEN + "This is green")
-    println(Console.YELLOW + "This is yellow")
-    println(Console.MAGENTA + "This is purple")
-    ColorSelect.colorSelect(scala.io.StdIn.readLine())
-
+    ColorSelect.colorSelect()
 
     val playerClass: String = ClassSelection.classSelection()
 
     println(playerClass)
     val player = Player.make(name, playerClass)
 
-    mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent ,name,playerClass,player)
+    mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent,player)
   }
-  def mainGame(xPlayer: Int , yPlayer: Int, xExit : Int ,yExit: Int ,yEvent :Int, xEvent : Int ,name: String, playerClass: String, player: Player.Player): Unit = {
+  def mainGame(xPlayer: Int , yPlayer: Int, xExit : Int ,yExit: Int ,yEvent :Int, xEvent : Int ,player: Player.Player): Unit = {
     val cordsPlayer = Navigation.movePlayer(xPlayer, yPlayer)
     val xDirection = cordsPlayer(0)
     val yDirection = cordsPlayer(1)
-    println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
 
     Compass.compassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
 
@@ -50,7 +42,7 @@ object Main {
         Combat.combatStart(player)
     }
     else if (xDirection == xExit && yDirection == yExit) {
-      FindingEvents.findExitText(name, playerClass)
+      FindingEvents.findExitText(player.name,player.playerClass)
       val inputExit = scala.io.StdIn.readLine()
       if (inputExit.toLowerCase().contains("no") || inputExit.toLowerCase().contains("n")) {
         TitleText("gameoverghost")
@@ -72,6 +64,6 @@ object Main {
       FindingEvents.xAlignedWithExitText()
     }
 
-    mainGame(xDirection,yDirection,xExit,yExit,yEvent,xEvent,name,playerClass,player)
+    mainGame(xDirection,yDirection,xExit,yExit,yEvent,xEvent,player)
   }
 }

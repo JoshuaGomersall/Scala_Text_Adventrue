@@ -1,6 +1,6 @@
 package Settings
 
-import TextGame.ColorSelect
+import TextGame.Settings.ColorSelect
 
 object ColorTests {
   def main(args: Array[String]): Unit = {
