@@ -1,6 +1,5 @@
 package TextGame
 
-import TextGame.Character_Creation.NameSelect
 import TextGame.CombatActions._
 import TextGame.Text.{FindingEvents, TitleText}
 import TextGame.Character_Creation._
