@@ -1,5 +1,6 @@
 package CharacterCreation
 
+import TextGame.Character_Creation.NameSelect
 import TextGame._
 
 object NameTests {

@@ -1,15 +1,15 @@
-package TextGame
+package TextGame.Character_Creation
 
+import TextGame.GlobalValues
 import TextGame.Character_Creation.ClassSelectionInfo
 
 object ClassSelection {
   val playerClass: String = "Monk"
-
   def classSelection(): String = {
     println("Select A Class Or Type Info And The Class Name For More Information \nType info class for a list of all class options")
     val playerClassCheck = scala.io.StdIn.readLine()
     if (playerClassCheck.toLowerCase().contains("info")) {
-      ClassSelectionInfo.classInfo(playerClass)
+      ClassSelectionInfo.classInfo(scala.io.StdIn.readLine())
       classSelection()
       "info"
     }
@@ -59,9 +59,10 @@ object ClassSelection {
       println(s"Is This Class Correct ")
       val input = scala.io.StdIn.readLine()
 
-      if (GlobalValues.confirmResponse().contains(input) != true) {
+      if (!GlobalValues.confirmResponse().contains(input)) {
         classSelection()
       }
     }
+    "Done"
   }
 }

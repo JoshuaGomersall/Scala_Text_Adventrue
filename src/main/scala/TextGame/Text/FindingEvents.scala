@@ -1,8 +1,8 @@
 package TextGame.Text
 
+import TextGame.Character_Creation._
 import TextGame.ColorSelect
-import TextGame.NameSelect._
-import TextGame._
+import TextGame.Character_Creation.NameSelect._
 
 object FindingEvents {
 
@@ -22,7 +22,7 @@ object FindingEvents {
   def startingOver(): String = {
     println("Starting Over........")
     nameSelect()
-    ColorSelect.colorSelect(scala.util.StdIn.readLine())
+    ColorSelect.colorSelect(scala.io.StdIn.readLine())
     ClassSelection.classSelection()
     println(s"You Are Now At 0 North and 0 East")
     "Done"
