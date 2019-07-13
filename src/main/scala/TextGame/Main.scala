@@ -42,6 +42,8 @@ object Main {
     val player = Player.makePlayer(name, playerClass)
 
     var cordsPlayer: List[Int] = List(xDirection, yDirection)
+
+    mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent ,name,playerClass,player)
   }
 
   def mainGame(xPlayer: Int , yPlayer: Int, xExit : Int ,yExit: Int ,yEvent :Int, xEvent : Int ,name: String, playerClass: String, player: Player.Player): Unit = {
@@ -50,7 +52,7 @@ object Main {
     val yDirection = cordsPlayer(1)
     println(s"You Are Now At " + yDirection + " North and " + xDirection + " East")
 
-    CompassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
+    Compass.compassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
 
     if (xDirection == xEvent && yDirection == yEvent) {
       FindingEvents.findEventText()
@@ -71,7 +73,7 @@ object Main {
         val yDirection = 0
         val xExit = Random.nextInt(10) - 5
         val yExit = Random.nextInt(10) - 5
-        CompassMain(xDirection, xExit, xEvent, yDirection, xExit, xEvent)
+        Compass.compassMain(xDirection, xExit, xEvent, yDirection, xExit, xEvent)
       }
     }
     else if (yDirection == yExit) {
