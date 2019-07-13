@@ -10,20 +10,15 @@ import scala.util.Random
 
 object Main {
   def main(args: Array[String]): Unit = {
-    Inventory.equiptItem("sword")
-    Inventory.equiptItem("armor")
-    println(Inventory.addItemToBackPack("armor"))
-    Inventory.equiptItem("armor ")
-
     val xDirection: Int = 0
     val yDirection: Int = 0
-    val xExit: Int = Random.nextInt(10) - 5
-    val yExit: Int = Random.nextInt(10) - 5
-    val xEvent: Int = scala.util.Random.nextInt(10) - 5
-    val yEvent: Int = scala.util.Random.nextInt(10) - 5
+    val xExit: Int = 2 //Random.nextInt(10) - 5
+    val yExit: Int = 2 //Random.nextInt(10) - 5
+    val xEvent: Int = 3 //scala.util.Random.nextInt(10) - 5
+    val yEvent: Int = 3 //scala.util.Random.nextInt(10) - 5
 
     TitleText("title")
-    println("Select A Character Name")
+
     val name: String = NameSelect.nameSelect()
 
 
@@ -41,11 +36,8 @@ object Main {
     println(playerClass)
     val player = Player.makePlayer(name, playerClass)
 
-    var cordsPlayer: List[Int] = List(xDirection, yDirection)
-
     mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent ,name,playerClass,player)
   }
-
   def mainGame(xPlayer: Int , yPlayer: Int, xExit : Int ,yExit: Int ,yEvent :Int, xEvent : Int ,name: String, playerClass: String, player: Player.Player): Unit = {
     val cordsPlayer = Navigation.movePlayer(xPlayer, yPlayer)
     val xDirection = cordsPlayer(0)

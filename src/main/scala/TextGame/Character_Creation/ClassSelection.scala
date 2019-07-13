@@ -11,7 +11,7 @@ object ClassSelection {
     if (playerClassCheck.toLowerCase().contains("info")) {
       ClassSelectionInfo.classInfo(scala.io.StdIn.readLine())
       classSelection()
-      "info"
+      return "info"
     }
     else {
       playerClassCheck.toLowerCase() match {
