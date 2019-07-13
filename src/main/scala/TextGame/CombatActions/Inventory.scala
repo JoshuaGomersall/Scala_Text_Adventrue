@@ -2,10 +2,8 @@ package TextGame.CombatActions
 
 
 object Inventory {
-
-  //TODO
-  var equipt = List[String]()
-  var backpack = List("sword")
+  val equipt: List[String] = List[String]()
+  val backpack: List[String] = List("sword")
 
   def addItemToBackPack(itemToAdd: String): List[String] = {
     println(s"Adding Item $itemToAdd To BackPack")
@@ -28,8 +26,6 @@ object Inventory {
     equipt
   }
 
-
-
   def displayEquipt(): String ={
     equipt.toString()
   }
@@ -39,9 +35,7 @@ object Inventory {
   }
 
 
-  class EquiptItems(var head: String = "", var torso: String = "", var leftHand: String = "",var rightHand: String ,var leftLeg: String ,var  rightLeg: String) {}
-
-  {
-
+  class EquiptItems(var head: String = "", var torso: String = "", var leftHand: String = "",var rightHand: String ,var leftLeg: String ,var  rightLeg: String) {
+    override def toString: String = s"You Have $head \n$torso \n$leftHand \n$rightHand \n$leftLeg \n$rightLeg "
   }
 }
