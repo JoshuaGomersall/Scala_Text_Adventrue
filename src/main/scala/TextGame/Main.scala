@@ -30,7 +30,17 @@ object Main {
 
     TitleText("title")
     val name: String = NameSelect.nameSelect()
-    ColorSelect.colorSelect()
+
+
+    println(Console.BLACK + "Select A Preferred Text Color")
+    println(Console.BLUE + "This is blue")
+    println(Console.RED + "This is red")
+    println(Console.GREEN + "This is green")
+    println(Console.YELLOW + "This is yellow")
+    println(Console.MAGENTA + "This is purple")
+    ColorSelect.colorSelect(scala.io.StdIn.readLine())
+
+
     val playerClass: String = ClassSelection.classSelection()
 
     println(playerClass)

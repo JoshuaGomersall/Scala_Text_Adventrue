@@ -23,9 +23,7 @@ object FindingEvents {
     println("Starting Over........")
     reset()
     nameSelect()
-    ColorSelect.reset()
-    ColorSelect.colorSelect()
-    ClassSelection.reset()
+    ColorSelect.colorSelect(scala.util.StdIn.readLine())
     ClassSelection.classSelection()
     println(s"You Are Now At 0 North and 0 East")
     "Done"
