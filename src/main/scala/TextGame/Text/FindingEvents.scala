@@ -14,7 +14,7 @@ object FindingEvents {
   def findExitText(name: String, playerClass: String): String = {
     println("YOU FOUND A THING")
     println(s"It Seems You Found The Exit")
-    println(s"This Was Not The End But The Start Of The Adventures of $name + The $playerClass")
+    println(s"This Was Not The End But The Start Of The Adventures of $name The $playerClass")
     println(s"Would You Like To Play Again")
     "Done"
   }
