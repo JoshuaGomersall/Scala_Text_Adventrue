@@ -6,8 +6,6 @@ import TextGame.Text.{FindingEvents, TitleText}
 import TextGame.Character_Creation._
 import TextGame.MovementAndNavigation._
 
-import scala.util.Random
-
 object Main {
   def main(args: Array[String]): Unit = {
     val xDirection: Int = 0
@@ -48,9 +46,9 @@ object Main {
 
     if (xDirection == xEvent && yDirection == yEvent) {
       FindingEvents.findEventText()
-      val xEventNew = scala.util.Random.nextInt(10) - 5
-      val yEventNew = scala.util.Random.nextInt(10) - 5
-      Combat.combatStart(player)
+      val xEventNew = 2
+      val yEventNew = 2
+        Combat.combatStart(player)
     }
     else if (xDirection == xExit && yDirection == yExit) {
       FindingEvents.findExitText(name, playerClass)
@@ -63,8 +61,8 @@ object Main {
         FindingEvents.startingOver()
         val xDirection = 0
         val yDirection = 0
-        val xExit = Random.nextInt(10) - 5
-        val yExit = Random.nextInt(10) - 5
+        val xExit = 3
+        val yExit = 3
         Compass.compassMain(xDirection,xExit,xEvent,yDirection,yExit,yEvent)
       }
     }
