@@ -1,4 +1,4 @@
-package TextGame
+package TextGame.Text
 
 case class TitleText(textType: String) {
 
@@ -13,24 +13,27 @@ case class TitleText(textType: String) {
   val titleRightDown = " _______                                                           __       __                               \n|       \\                                                         |  \\     /  \\                              \n| $$$$$$$\\  ______    ______    ______    ______   _______        | $$\\   /  $$  ______    ______    ______  \n| $$__/ $$ |      \\  /      \\  /      \\  /      \\ |       \\       | $$$\\ /  $$$ /      \\  /      \\  /      \\ \n| $$    $$  \\$$$$$$\\|  $$$$$$\\|  $$$$$$\\|  $$$$$$\\| $$$$$$$\\      | $$$$\\  $$$$|  $$$$$$\\|  $$$$$$\\|  $$$$$$\\\n| $$$$$$$\\ /      $$| $$   \\$$| $$   \\$$| $$    $$| $$  | $$      | $$\\$$ $$ $$| $$  | $$| $$   \\$$| $$   \\$$\n| $$__/ $$|  $$$$$$$| $$      | $$      | $$$$$$$$| $$  | $$      | $$ \\$$$| $$| $$__/ $$| $$      | $$      \n| $$    $$ \\$$    $$| $$      | $$       \\$$     \\| $$  | $$      | $$  \\$ | $$ \\$$    $$| $$      | $$      \n \\$$$$$$$   \\$$$$$$$ \\$$       \\$$        \\$$$$$$$ \\$$   \\$$       \\$$      \\$$  \\$$$$$$  \\$$       \\$$      \n                                                                                                             \n                                                                                                             \n                                                                                                             "
 
 
-  if (textType.toLowerCase() == "title") {
-    println(clearConsole)
-    println(titleLeftUp)
-    Thread.sleep(1000)
-    println(clearConsole)
-    println(titleRightUp)
-    Thread.sleep(1000)
-    println(clearConsole)
-    println(titleLeftDown)
-    Thread.sleep(1000)
-    println(clearConsole)
-    println(titleRightDown)
-    Thread.sleep(1000)
-  }
-  else if (textType.toLowerCase() == "gameover") {
-    println(gameOverNormal)
-  }
-  else if (textType.toLowerCase() == "gameoverghost") {
-    println(gameOverGhost)
+  textType.toLowerCase() match {
+    case x if x == "title" =>
+  println (clearConsole)
+  println (titleLeftUp)
+  Thread.sleep (1000)
+  println (clearConsole)
+  println (titleRightUp)
+  Thread.sleep (1000)
+  println (clearConsole)
+  println (titleLeftDown)
+  Thread.sleep (1000)
+  println (clearConsole)
+  println (titleRightDown)
+  Thread.sleep (1000)
+
+    case x if x == "gameover" =>
+  println (gameOverNormal)
+
+    case x if x =="gameoverghost" =>
+  println (gameOverGhost)
+
+    case _ => println("Invalid")
   }
 }

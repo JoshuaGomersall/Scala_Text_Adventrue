@@ -2,7 +2,7 @@ package TextGame
 
 import TextGame.Character_Creation.NameSelect
 import TextGame.CombatActions._
-import TextGame.Text.FindingEvents
+import TextGame.Text.{FindingEvents, TitleText}
 import TextGame.Character_Creation._
 import TextGame.MovementAndNavigation._
 
@@ -65,7 +65,7 @@ object Main {
         val yDirection = 0
         val xExit = Random.nextInt(10) - 5
         val yExit = Random.nextInt(10) - 5
-        Compass.compassMain(xDirection, xExit, xEvent, yDirection, xExit, xEvent)
+        Compass.compassMain(xDirection,xExit,xEvent,yDirection,yExit,yEvent)
       }
     }
     else if (yDirection == yExit) {
@@ -74,5 +74,7 @@ object Main {
     else if (xDirection == xExit) {
       FindingEvents.xAlignedWithExitText()
     }
+
+    mainGame(xDirection,yDirection,xExit,yExit,yEvent,xEvent,name,playerClass,player)
   }
 }
