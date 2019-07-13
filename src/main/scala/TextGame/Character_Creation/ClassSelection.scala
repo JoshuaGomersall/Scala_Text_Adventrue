@@ -17,13 +17,13 @@ object ClassSelection {
       playerClassCheck.toLowerCase() match {
         case x if x.contains("bard") =>
           println("You Are Now A Bard")
-          return "Bard"
+          "Bard"
         case x if x.contains("barb") =>
           println("You Are Now A Barbarian")
-          return "Barbarian"
+          "Barbarian"
         case x if x.contains("cleric") =>
           println("You Are Now A Cleric")
-          return "Cleric"
+          "Cleric"
         case x if x.contains("druid") =>
           println("You Are Now A Druid")
           "Druid"
@@ -59,7 +59,7 @@ object ClassSelection {
       println(s"Is This Class Correct ")
       val input = scala.io.StdIn.readLine()
 
-      if (GlobalValues.confirmResponse().contains(input) == false) {
+      if (GlobalValues.confirmResponse().contains(input) != true) {
         classSelection()
       }
     }

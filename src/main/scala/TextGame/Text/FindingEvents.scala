@@ -21,7 +21,6 @@ object FindingEvents {
 
   def startingOver(): String = {
     println("Starting Over........")
-    reset()
     nameSelect()
     ColorSelect.colorSelect(scala.util.StdIn.readLine())
     ClassSelection.classSelection()
