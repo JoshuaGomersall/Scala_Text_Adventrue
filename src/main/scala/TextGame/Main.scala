@@ -11,10 +11,10 @@ object Main {
   def main(args: Array[String]): Unit = {
     val xDirection: Int = 0
     val yDirection: Int = 0
-    val xExit: Int = 2 //Random.nextInt(10) - 5
-    val yExit: Int = 2 //Random.nextInt(10) - 5
-    val xEvent: Int = 3 //scala.util.Random.nextInt(10) - 5
-    val yEvent: Int = 3 //scala.util.Random.nextInt(10) - 5
+    val xExit: Int = Random.integerValue(100)
+    val yExit: Int = Random.integerValue(100)
+    val xEvent: Int = Random.integerValue(100)
+    val yEvent: Int = Random.integerValue(100)
 
     TitleText("title")
 
@@ -42,8 +42,8 @@ object Main {
     xDirection match {
       case x if x == xEvent && yDirection == yEvent
         => FindingEvents.findEventText()
-        val xEventNew = 2
-        val yEventNew = 2
+        val xEventNew = Random.integerValue(100)
+        val yEventNew = Random.integerValue(100)
         Combat.combatStart(player)
 
       case x if x == xExit && yDirection ==yExit =>
@@ -56,9 +56,9 @@ object Main {
             val newPLayer = characterCreation()
             val xDirection = 0
             val yDirection = 0
-            val xExit = 3
-            val yExit = 3
-            mainGame(xDirection, yDirection, Random.integerValue(10), Random.integerValue(10), Random.integerValue(10), Random.integerValue(10), newPLayer)
+            val xExit = Random.integerValue(100)
+            val yExit = Random.integerValue(100)
+            mainGame(xDirection, yDirection, Random.integerValue(100), Random.integerValue(100), Random.integerValue(100), Random.integerValue(100), newPLayer)
             Compass.compassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
           }
       case x if yDirection == yExit => FindingEvents.yAlignedWithExitText()
