@@ -13,6 +13,7 @@ object Main {
     val yDirection: Int = 0
     val xExit: Int = Random.integerValue(100)
     val yExit: Int = Random.integerValue(100)
+    Thread.sleep(100)
     val xEvent: Int = Random.integerValue(100)
     val yEvent: Int = Random.integerValue(100)
 
@@ -40,12 +41,6 @@ object Main {
 
 
     xDirection match {
-      case x if x == xEvent && yDirection == yEvent
-        => FindingEvents.findEventText()
-        val xEventNew = Random.integerValue(100)
-        val yEventNew = Random.integerValue(100)
-        Combat.combatStart(player)
-
       case x if x == xExit && yDirection ==yExit =>
         FindingEvents.findExitText(player.name,player.playerClass)
         val inputExit = scala.io.StdIn.readLine()
@@ -56,14 +51,22 @@ object Main {
             val newPLayer = characterCreation()
             val xDirection = 0
             val yDirection = 0
+          Thread.sleep(100)
             val xExit = Random.integerValue(100)
             val yExit = Random.integerValue(100)
+          Thread.sleep(100)
             mainGame(xDirection, yDirection, Random.integerValue(100), Random.integerValue(100), Random.integerValue(100), Random.integerValue(100), newPLayer)
             Compass.compassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
           }
       case x if yDirection == yExit => FindingEvents.yAlignedWithExitText()
 
       case x if x ==xExit => FindingEvents.xAlignedWithExitText()
+
+      case x if x == xEvent && yDirection == yEvent
+      => FindingEvents.findEventText()
+        val xEventNew = Random.integerValue(100)
+        val yEventNew = Random.integerValue(100)
+        Combat.combatStart(player)
 
       case _ => println("You Are Still Searching")
     }

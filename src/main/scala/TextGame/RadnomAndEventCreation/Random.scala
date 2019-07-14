@@ -11,6 +11,7 @@ object Random {
   def integerValue(maxValue: Int): Int ={
     val now = Calendar.getInstance()
     val randomValueInt = now.get(Calendar.MILLISECOND)
-    randomValueInt.toInt /maxValue - 5
+    println("New Random : " + {randomValueInt.toInt /maxValue - 10})
+    randomValueInt.toInt /maxValue - 10
   }
 }
