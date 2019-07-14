@@ -1,6 +1,6 @@
 package TextGame.CombatActions
 
-import TextGame.RadnomAndEventCreation._
+import TextGame.RandomAndEventCreation._
 
 object Enemy {
   def make(): Enemy = {

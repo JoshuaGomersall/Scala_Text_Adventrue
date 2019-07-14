@@ -5,7 +5,8 @@ import TextGame.Text._
 import TextGame.Character_Creation._
 import TextGame.Settings._
 import TextGame.MovementAndNavigation._
-import TextGame.RadnomAndEventCreation._
+import TextGame.PlayerAdvancements.Player
+import TextGame.RandomAndEventCreation._
 
 object Main {
   def main(args: Array[String]): Unit = {

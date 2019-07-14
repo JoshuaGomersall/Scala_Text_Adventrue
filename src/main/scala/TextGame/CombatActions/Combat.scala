@@ -1,5 +1,6 @@
 package TextGame.CombatActions
 
+import TextGame.PlayerAdvancements.Player
 import TextGame._
 
 object Combat {
