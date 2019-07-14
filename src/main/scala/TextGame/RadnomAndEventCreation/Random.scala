@@ -8,10 +8,10 @@ object Random {
   }
 
 
-  def integerValue(maxValue: Int): Int ={
+  def integerValue(maxValue: Int ,minusValue :Int = 10): Int ={
     val now = Calendar.getInstance()
     val randomValueInt = now.get(Calendar.MILLISECOND)
-    println("New Random : " + {randomValueInt.toInt /maxValue - 10})
-    randomValueInt.toInt /maxValue - 10
+    println("New Random : " + {randomValueInt.toInt /maxValue - minusValue})
+    randomValueInt.toInt /maxValue - minusValue
   }
 }

@@ -1,8 +1,10 @@
-package TextGame
+package TextGame.CombatActions
+
+import TextGame.RadnomAndEventCreation._
 
 object Enemy {
-  def makeEnemy(): Enemy = {
-    val enemyType: Int = scala.util.Random.nextInt(4) + 1
+  def make(): Enemy = {
+    val enemyType: Int = Random.integerValue(200 ,-1)
     val enemy = new Enemy("Greg", enemyType)
     enemy
   }

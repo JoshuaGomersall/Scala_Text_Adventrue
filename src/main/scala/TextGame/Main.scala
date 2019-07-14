@@ -55,7 +55,7 @@ object Main {
             val xExit = Random.integerValue(100)
             val yExit = Random.integerValue(100)
           Thread.sleep(100)
-            mainGame(xDirection, yDirection, Random.integerValue(100), Random.integerValue(100), Random.integerValue(100), Random.integerValue(100), newPLayer)
+            mainGame(xDirection ,yDirection ,xExit ,yExit ,Random.integerValue(100),Random.integerValue(100),player)
             Compass.compassMain(xDirection, xExit, xEvent, yDirection, yExit, yEvent)
           }
       case x if yDirection == yExit => FindingEvents.yAlignedWithExitText()

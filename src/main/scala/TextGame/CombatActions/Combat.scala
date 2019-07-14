@@ -1,10 +1,10 @@
 package TextGame.CombatActions
 
-import TextGame.Enemy
+import TextGame._
 
 object Combat {
   def combatStart(player: Player.Player): Player.Player = {
-    val newEnemy = Enemy.makeEnemy()
+    val newEnemy = Enemy.make()
     println("Combat Has Started")
     Enemy.enemyIntro(newEnemy.name, newEnemy.enemyType)
     while (newEnemy.hp > 0) {
@@ -26,8 +26,6 @@ object Combat {
     }
     player
   }
-
-
 
 
   def combatEnd(): String = {
