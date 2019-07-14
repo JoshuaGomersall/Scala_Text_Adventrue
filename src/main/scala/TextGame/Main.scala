@@ -5,6 +5,7 @@ import TextGame.Text._
 import TextGame.Character_Creation._
 import TextGame.Settings._
 import TextGame.MovementAndNavigation._
+import TextGame.RadnomAndEventCreation._
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -17,17 +18,19 @@ object Main {
 
     TitleText("title")
 
-    val name: String = NameSelect.nameSelect()
-
-    ColorSelect.colorSelect()
-
-    val playerClass: String = ClassSelection.classSelection()
-
-    println(playerClass)
-    val player = Player.make(name, playerClass)
+    val player = characterCreation()
 
     mainGame(xDirection ,yDirection ,xExit ,yExit ,yEvent ,xEvent,player)
   }
+
+  def characterCreation () : Player.Player ={
+    val name: String = NameSelect.nameSelect()
+    ColorSelect.colorSelect()
+    val playerClass: String = ClassSelection.classSelection()
+    println(playerClass)
+    Player.make(name, playerClass)
+  }
+
   def mainGame(xPlayer: Int , yPlayer: Int, xExit : Int ,yExit: Int ,yEvent :Int, xEvent : Int ,player: Player.Player): Unit = {
     val cordsPlayer = Navigation.movePlayer(xPlayer, yPlayer)
     val xDirection = cordsPlayer(0)
@@ -49,11 +52,12 @@ object Main {
         sys.exit()
       }
       else {
-        FindingEvents.startingOver()
+        val newPLayer = characterCreation()
         val xDirection = 0
         val yDirection = 0
         val xExit = 3
         val yExit = 3
+        mainGame(xDirection ,yDirection ,Random.integerValue(10) ,Random.integerValue(10) ,Random.integerValue(10) ,Random.integerValue(10),newPLayer)
         Compass.compassMain(xDirection,xExit,xEvent,yDirection,yExit,yEvent)
       }
     }

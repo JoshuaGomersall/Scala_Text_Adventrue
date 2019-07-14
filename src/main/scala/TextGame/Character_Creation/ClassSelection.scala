@@ -11,7 +11,7 @@ object ClassSelection {
     playerClassCheck.toLowerCase() match {
       case x if x.contains("info") =>
         ClassSelectionInfo.classInfo(x)
-        "info"
+        classSelection()
       case x if x.contains("bard") =>
         classConfirm("bard")
         "bard"
