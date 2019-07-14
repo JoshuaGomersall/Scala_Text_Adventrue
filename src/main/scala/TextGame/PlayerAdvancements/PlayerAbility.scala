@@ -25,10 +25,8 @@ object PlayerAbility {
     override def toString: String = {s"$skillName \n$skillDesc \nAt Skill Rank : $skillRank\n"}
   }
 
-  class Furry extends Ability(skillName = "Furry" ,skillDesc = "You Get Very Mad") {
-  }
+  class Furry extends Ability(skillName = "Furry" ,skillDesc = "You Get Very Mad")
 
-  class WildShape extends Ability(skillName = "Wild Shape" ,skillDesc = "You Turn Into An Animal") {
-  }
+  class WildShape extends Ability(skillName = "Wild Shape" ,skillDesc = "You Turn Into An Animal")
 
 }
