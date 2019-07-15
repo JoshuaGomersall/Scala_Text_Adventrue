@@ -1,63 +1,91 @@
 package TextGame.ShopsAndItems
 
-
 object CurrencyLogic {
 
   def main(args: Array[String]): Unit = {
-    val testingclass = currencyChecker(10,10,11)
-    println(testingclass)
-    println("Done" + testingclass)
+    val testingclass :List[Int] = currencyCheckerBronze(List(1000, -1000, 100))
+    Thread.sleep(1000)
+    val testingclass2 :List[Int] = currencyCheckerSilver(testingclass)
+    println("Done" + testingclass2)
+
+    if (testingclass2.contains("-")){
+      println("Too Poor")
+    }
   }
 
   @annotation.tailrec
-  def currencyChecker(goldIn: Int, silverIn: Int, bronzeIn: Int,doneChecking :Boolean = false): List[Int] = {
+  def currencyCheckerSilver(currency :List[Int]): List[Int] = {
     Thread.sleep(100)
-    println(s"Gold : $goldIn ,Silver : $silverIn ,Bronze : $bronzeIn")
+    println(s"Gold : ${currency(0)} ,Silver : ${currency(1)} ,Bronze : ${currency(2)}")
 
-    var gold: Int = goldIn
-    var silver: Int = silverIn
-    var bronze: Int = bronzeIn
-
-    silverIn match {
-      case x if x < 0 && goldIn > 0 =>
-        silver = silverIn + 10
-        gold = goldIn - 1
-      //currencyChecker(goldUpdated, silverUpdated, bronzeIn)
-
-      case x if x >= 100 =>
-        silver = silverIn - 100
-        gold = goldIn + 10
-      //currencyChecker(goldUpdated, silverUpdated, bronzeIn)
-
-      case x if x >= 10 =>
-        silver = silverIn - 10
-        gold = goldIn + 1
-      //currencyChecker(goldUpdated, silverUpdated, bronzeIn)
-
-      case _ =>
+    currency(1) match {
+      case x if x < 0 && currency(0) > 10 =>
+        val silverUpdated = currency(1) + 100
+        val goldUpdated = currency(0) - 10
+        currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
+    case x if x < 0 && currency(0) > 0 =>
+    val silverUpdated = currency(1) + 10
+    val goldUpdated = currency(0) - 1
+    currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
+    case x if x >= 10000 =>
+      val silverUpdated = currency(1) - 10000
+      val goldUpdated = currency(0) + 1000
+      currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
+    case x if x >= 1000 =>
+      val silverUpdated = currency(1) - 1000
+      val goldUpdated = currency(0) + 100
+      currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
+    case x if x >= 100 =>
+    val silverUpdated = currency(1) - 100
+    val goldUpdated = currency(0) + 10
+    currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
+    case x if x >= 10 =>
+      val silverUpdated = currency(1) - 10
+      val goldUpdated = currency(0) + 1
+      currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
+    case _ => currency
     }
-    bronzeIn match {
-      case x if x < 0 && silverIn > 0 =>
-        bronze = bronzeIn + 10
-        silver = silver - 1
-      currencyChecker(goldIn, silver, bronze)
+  }
 
+
+  @annotation.tailrec
+  def currencyCheckerBronze(currency :List[Int]): List[Int] = {
+    Thread.sleep(100)
+    println(s"Gold : ${currency(0)} ,Silver : ${currency(1)} ,Bronze : ${currency(2)}")
+
+    currency(2) match {
+      case x if x < 0 && currency(1) > 10 =>
+        val bronzeUpdated = currency(2) + 100
+        val silverUpdated = currency(1) - 10
+        currencyCheckerBronze(List(currency(0), silverUpdated , bronzeUpdated))
+      case x if x < 0 && currency(1) > 0 =>
+        val bronzeUpdated = currency(2) + 10
+        val silverUpdated = currency(1) - 1
+        currencyCheckerBronze(List(currency(0), silverUpdated , bronzeUpdated))
+      case x if x >= 10000 =>
+        val bronzeUpdated = currency(2) - 10000
+        val silverUpdated = currency(1) + 1000
+        currencyCheckerBronze(List(currency(0), silverUpdated, bronzeUpdated))
+      case x if x >= 1000 =>
+        val bronzeUpdated = currency(2) - 1000
+        val silverUpdated = currency(1) + 100
+        currencyCheckerBronze(List (currency(0), silverUpdated, bronzeUpdated))
       case x if x >= 100 =>
-        bronze = bronzeIn - 100
-        silver = silver + 10
-      currencyChecker(goldIn, silver, bronze)
-
+        val bronzeUpdated = currency(2) - 100
+        val silverUpdated = currency(1) + 10
+        currencyCheckerBronze(List(currency(0), silverUpdated, bronzeUpdated))
       case x if x >= 10 =>
-        bronze = bronzeIn - 10
-        silver = silverIn + 1
-      currencyChecker(goldIn, silver, bronze)
-
-      case _ if goldIn > 0 && silverIn > 0 & bronzeIn > 0 =>
-        val newCurrency: List[Int] = List(gold, silver, bronze)
+        val bronzeUpdated = currency(2) - 10
+        val silverUpdated = currency(1) + 1
+        currencyCheckerBronze(List(currency(0), silverUpdated, bronzeUpdated))
+      case x if currency(0) >= 0 && currency(1) >= 0 & x >= 0 =>
+        val newCurrency: List[Int] = List(currency(0), currency(1), currency(2))
         println(s"Gold   : ${newCurrency(0)} \nSilver : ${newCurrency(1)} \nBronze : ${newCurrency(2)}")
         println(newCurrency.toString())
-        //currencyChecker(goldIn,silverIn,bronzeIn)
         newCurrency
+      case _ =>
+        println("Not Enought Money")
+        currency
     }
   }
 }
