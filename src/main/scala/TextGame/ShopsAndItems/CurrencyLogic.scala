@@ -3,8 +3,8 @@ package TextGame.ShopsAndItems
 object CurrencyLogic {
 
   def main(args: Array[String]): Unit = {
-    val testingclass :List[Int] = currencyCheckerSilver(List(19, -99, -10))
-    val testingclass2 :List[Int] = currencyCheckerBronze(testingclass)
+    val testingclass :List[Int] = currencyCheckerBronze(List(19, -100, -100))
+    val testingclass2 :List[Int] = currencyCheckerSilver(testingclass)
     println("Done" + testingclass2)
 
     if (testingclass2.contains("-")){
@@ -41,7 +41,6 @@ object CurrencyLogic {
     case _ => currency
     }
   }
-
 
   @annotation.tailrec
   def currencyCheckerBronze(currency :List[Int]): List[Int] = {
