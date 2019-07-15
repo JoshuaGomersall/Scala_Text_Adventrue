@@ -3,9 +3,8 @@ package TextGame.ShopsAndItems
 object CurrencyLogic {
 
   def main(args: Array[String]): Unit = {
-    val testingclass :List[Int] = currencyCheckerBronze(List(1000, -1000, 100))
-    Thread.sleep(1000)
-    val testingclass2 :List[Int] = currencyCheckerSilver(testingclass)
+    val testingclass :List[Int] = currencyCheckerSilver(List(19, -99, -10))
+    val testingclass2 :List[Int] = currencyCheckerBronze(testingclass)
     println("Done" + testingclass2)
 
     if (testingclass2.contains("-")){
@@ -19,11 +18,7 @@ object CurrencyLogic {
     println(s"Gold : ${currency(0)} ,Silver : ${currency(1)} ,Bronze : ${currency(2)}")
 
     currency(1) match {
-      case x if x < 0 && currency(0) > 10 =>
-        val silverUpdated = currency(1) + 100
-        val goldUpdated = currency(0) - 10
-        currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
-    case x if x < 0 && currency(0) > 0 =>
+      case x if x < 0 && currency(0) > 0 =>
     val silverUpdated = currency(1) + 10
     val goldUpdated = currency(0) - 1
     currencyCheckerSilver(List(goldUpdated, silverUpdated, currency(2)))
@@ -54,6 +49,10 @@ object CurrencyLogic {
     println(s"Gold : ${currency(0)} ,Silver : ${currency(1)} ,Bronze : ${currency(2)}")
 
     currency(2) match {
+      case x if x < 0 && currency(0) > 0 =>
+        val bronzeUpdated = currency(2) + 100
+        val goldUpdated = currency(0) - 1
+        currencyCheckerBronze(List(goldUpdated, currency(1) , bronzeUpdated))
       case x if x < 0 && currency(1) > 10 =>
         val bronzeUpdated = currency(2) + 100
         val silverUpdated = currency(1) - 10
