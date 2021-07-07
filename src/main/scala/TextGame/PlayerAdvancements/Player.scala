@@ -1,4 +1,6 @@
-package TextGame.CombatActions
+package TextGame.PlayerAdvancements
+
+import TextGame.PlayerAdvancements.Player._
 
 object Player {
 
@@ -23,15 +25,11 @@ object Player {
 
   class Player(var name: String, var playerClass: String, var hp: Int = 100, var attack: Int = 10) {
     playerClass.toLowerCase match {
-      case "bard" => println(s"The Enemy Is A Goblin")
+      case "bard" => println(s"So You Are A Bard Ayy")
       case _ => println(s"The Class Is Invalid ,Default Stats Set")
     }
-
     override def toString: String = s"The Enemy is $name and has is $hp"
-
     def intro: String = s"Hi im $name and im a $playerClass"
-
     def fullStats: String = s"===========================\n Name: $name \nClass: $playerClass \nHealth: $hp \nAttack: $attack \n==========================="
   }
-
 }
